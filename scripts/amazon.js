@@ -1,31 +1,30 @@
 import {cart, addToCart} from '../data/cart.js';
-import {products} from '../data/products.js'
-
+import {products} from '../data/products.js';
 
 let productsHTML = '';
 
-products.forEach((products) => {
+products.forEach((product) => { // Changed 'products' to 'product'
     productsHTML += ` 
         <div class="product-container">
           <div class="product-image-container">
             <img class="product-image"
-              src="${products.image}">
+              src="${product.image}"> <!-- Changed 'products' to 'product' -->
           </div>
 
           <div class="product-name limit-text-to-2-lines">
-            ${products.name}
+            ${product.name} <!-- Changed 'products' to 'product' -->
           </div>
 
           <div class="product-rating-container">
             <img class="product-rating-stars"
-              src="images/ratings/rating-${products.rating.stars * 10}.png">
+              src="images/ratings/rating-${product.rating.stars * 10}.png"> <!-- Changed 'products' to 'product' -->
             <div class="product-rating-count link-primary">
-              ${products.rating.count}
+              ${product.rating.count} <!-- Changed 'products' to 'product' -->
             </div>
           </div>
 
           <div class="product-price">
-            ${(products.priceCents / 100).toFixed(2)}
+            ${(product.priceCents / 100).toFixed(2)} <!-- Changed 'products' to 'product' -->
           </div>
 
           <div class="product-quantity-container">
@@ -51,7 +50,7 @@ products.forEach((products) => {
           </div>
 
           <button class="add-to-cart-button button-primary js-add-to-cart"
-          data-product-id="${products.id}">
+          data-product-id="${product.id}"> <!-- Changed 'products' to 'product' -->
             Add to Cart
           </button>
         </div>
@@ -61,15 +60,14 @@ products.forEach((products) => {
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
 function updateCartQuantity() {
-  let cartQuantity = 0
+  let cartQuantity = 0;
 
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity;
+  });
 
-        cart.forEach((cartItem) => {
-          cartQuantity += cartItem.quantity ;
-        });
-
-        document.querySelector('.js-cart-quantity')
-          .innerHTML = cartQuantity;
+  document.querySelector('.js-cart-quantity')
+    .innerHTML = cartQuantity;
 }
 
 document.querySelectorAll('.js-add-to-cart').forEach((button) => {

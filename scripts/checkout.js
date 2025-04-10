@@ -9,7 +9,7 @@ cart.forEach((cartItem) => {
 
     let matchingProduct;
 
-    products.forEach((products) => {
+    products.forEach((product) => {
         if (productId === productId){
             matchingProduct = products;
         }
