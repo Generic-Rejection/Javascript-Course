@@ -11,7 +11,7 @@ cart.forEach((cartItem) => {
 
     products.forEach((product) => {
         if (productId === productId){
-            matchingProduct = products;
+            matchingProduct = product;
         }
     });
 

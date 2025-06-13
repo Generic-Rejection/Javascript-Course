@@ -3,28 +3,27 @@ import {products} from '../data/products.js';
 
 let productsHTML = '';
 
-products.forEach((product) => { // Changed 'products' to 'product'
+products.forEach((product) => {
     productsHTML += ` 
         <div class="product-container">
           <div class="product-image-container">
             <img class="product-image"
-              src="${product.image}"> <!-- Changed 'products' to 'product' -->
+              src="${product.image}">
           </div>
 
           <div class="product-name limit-text-to-2-lines">
-            ${product.name} <!-- Changed 'products' to 'product' -->
+            ${product.name}
           </div>
 
           <div class="product-rating-container">
             <img class="product-rating-stars"
-              src="images/ratings/rating-${product.rating.stars * 10}.png"> <!-- Changed 'products' to 'product' -->
-            <div class="product-rating-count link-primary">
-              ${product.rating.count} <!-- Changed 'products' to 'product' -->
+              src="images/ratings/rating-${product.rating.stars * 10}.png"> 
+              ${product.rating.count} 
             </div>
           </div>
 
           <div class="product-price">
-            ${(product.priceCents / 100).toFixed(2)} <!-- Changed 'products' to 'product' -->
+            ${(product.priceCents / 100).toFixed(2)} 
           </div>
 
           <div class="product-quantity-container">
@@ -69,11 +68,3 @@ function updateCartQuantity() {
   document.querySelector('.js-cart-quantity')
     .innerHTML = cartQuantity;
 }
-
-document.querySelectorAll('.js-add-to-cart').forEach((button) => {
-    button.addEventListener('click', () => {
-        const productId = button.dataset.productId;
-        addToCart(productId);
-        updateCartQuantity();
-    });
-});
